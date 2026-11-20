@@ -1,6 +1,6 @@
 ﻿namespace EscapeGameTC;
 
-public class MyMethods
+public class TextMethods
 {
     public static void AttendreContinuer()
     {
@@ -64,4 +64,6 @@ public class MyMethods
         }
         
     }
+
+
 }
