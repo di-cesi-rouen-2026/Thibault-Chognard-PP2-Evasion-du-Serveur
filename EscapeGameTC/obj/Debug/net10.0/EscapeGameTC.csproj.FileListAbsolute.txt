@@ -1,0 +1,16 @@
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\bin\Debug\net10.0\EscapeGameTC.exe
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\bin\Debug\net10.0\EscapeGameTC.deps.json
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\bin\Debug\net10.0\EscapeGameTC.runtimeconfig.json
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\bin\Debug\net10.0\EscapeGameTC.dll
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\bin\Debug\net10.0\EscapeGameTC.pdb
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\obj\Debug\net10.0\EscapeGameTC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\obj\Debug\net10.0\EscapeGameTC.AssemblyInfoInputs.cache
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\obj\Debug\net10.0\EscapeGameTC.AssemblyInfo.cs
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\obj\Debug\net10.0\EscapeGameTC.csproj.CoreCompileInputs.cache
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\obj\Debug\net10.0\EscapeGameTC.sourcelink.json
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\obj\Debug\net10.0\EscapeGameTC.dll
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\obj\Debug\net10.0\refint\EscapeGameTC.dll
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\obj\Debug\net10.0\EscapeGameTC.pdb
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\obj\Debug\net10.0\EscapeGameTC.genruntimeconfig.cache
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\obj\Debug\net10.0\ref\EscapeGameTC.dll
+C:\Users\thib2\Desktop\Fichiers CESI\Projets\Thibault-Chognard-PP2-Evasion-du-Serveur\EscapeGameTC\obj\Debug\net10.0\EscapeGa.E985F3E8.Up2Date
