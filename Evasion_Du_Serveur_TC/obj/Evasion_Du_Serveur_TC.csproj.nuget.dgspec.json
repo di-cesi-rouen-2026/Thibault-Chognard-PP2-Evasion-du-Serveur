@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\thib2\\Desktop\\Stuff\\Coding Trainings\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj": {}
+    "C:\\Users\\thib2\\Desktop\\Fichier CESI\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\thib2\\Desktop\\Stuff\\Coding Trainings\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj": {
+    "C:\\Users\\thib2\\Desktop\\Fichier CESI\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\thib2\\Desktop\\Stuff\\Coding Trainings\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj",
+        "projectUniqueName": "C:\\Users\\thib2\\Desktop\\Fichier CESI\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj",
         "projectName": "Evasion_Du_Serveur_TC",
-        "projectPath": "C:\\Users\\thib2\\Desktop\\Stuff\\Coding Trainings\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj",
+        "projectPath": "C:\\Users\\thib2\\Desktop\\Fichier CESI\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj",
         "packagesPath": "C:\\Users\\thib2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\thib2\\Desktop\\Stuff\\Coding Trainings\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC\\obj\\",
+        "outputPath": "C:\\Users\\thib2\\Desktop\\Fichier CESI\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

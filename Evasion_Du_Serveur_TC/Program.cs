@@ -1,4 +1,5 @@
 ﻿using EscapeGameTC;
+using Microsoft.VisualBasic;
 internal class Program
 {
     private static void Main(string[] args)
@@ -10,8 +11,14 @@ internal class Program
 
         bool dansSalle1 = true;
         bool casiersFouilles = false;
-        bool papierLu = false;
+        bool terminalInspecte = false;
+        bool finiEnigmesSalle1 = false;
         string preventionSortieSalle1 = "";
+        Dictionary<string, string> menuChoix1 = new Dictionary<string, string>
+        {
+            ["1"] = "S'approcher du terminal",
+            ["2"] = "Fouiller les casiers"
+        };
 
         bool dansSalle2 = false;
         bool finiAvecPC = false;
@@ -52,57 +59,22 @@ internal class Program
         {
             Console.Clear();
             TextMethods.RegularWriteLine("Que faire ?");
-            if (casiersFouilles && papierLu)
+            TextMethods.WriteMenu(menuChoix1);
+            string choix1 = Console.ReadLine();
+
+            if (!casiersFouilles)
             {
-                TextMethods.RegularWriteLine("1. Sortir par la porte");
+                while (choix1 != "1" && choix1 != "2")
+                {
+                    TextMethods.RegularWriteLine("Entrez 1 ou 2 pour choisir quoi faire.");
+                    choix1 = Console.ReadLine();
+                }
             }
             else
             {
-                Console.Write("1. Sortir par la porte");
-            }
-            if (!casiersFouilles && !papierLu)
-            {
-                TextMethods.RegularWriteLine("     2. Fouiller les casiers     3. Lire papier");
-            }
-            else if (casiersFouilles && !papierLu)
-            {
-                TextMethods.RegularWriteLine("     2. Lire papier");
-            }
-            else if (!casiersFouilles && papierLu)
-            {
-                TextMethods.RegularWriteLine("     2. Fouiller les casiers");
-            }
-
-            string choix1 = Console.ReadLine();
-            if (!casiersFouilles && !papierLu)
-            {
-                while (choix1 != "1" && choix1 != "2" && choix1 != "3")
-                {
-                    TextMethods.RegularWriteLine("Entrez une action possible.");
-                    choix1 = Console.ReadLine();
-                }
-            }
-            else if (casiersFouilles && !papierLu)
-            {
-                while (choix1 != "1" && choix1 != "2")
-                {
-                    TextMethods.RegularWriteLine("Entrez une action possible.");
-                    choix1 = Console.ReadLine();
-                }
-            }
-            else if (!casiersFouilles && papierLu)
-            {
-                while (choix1 != "1" && choix1 != "2")
-                {
-                    TextMethods.RegularWriteLine("Entrez une action possible.");
-                    choix1 = Console.ReadLine();
-                }
-            }
-            else if (casiersFouilles && papierLu)
-            {
                 while (choix1 != "1")
                 {
-                    TextMethods.RegularWriteLine("Entrez une action possible.");
+                    TextMethods.RegularWriteLine("Entrez 1 pour continuer.");
                     choix1 = Console.ReadLine();
                 }
             }
@@ -110,71 +82,63 @@ internal class Program
             switch (choix1)
             {
                 case "1":
-                    if (!casiersFouilles || !papierLu)
+                    if (!terminalInspecte)
                     {
-                        TextMethods.FastWriteLine("Cette action est irréversible. Est-vous sûr de vouloir quitter la salle ?");
-                        TextMethods.RegularWriteLine("1. Sortir   2. Ne pas sortir tout de suite");
-                        preventionSortieSalle1 = Console.ReadLine();
-
-                    }
-                    if (preventionSortieSalle1 == "2")
-                    {
+                        TextMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle1", heroName));
+                        TextMethods.AttendreContinuer();
+                        TextMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle2", heroName));
+                        TextMethods.AttendreContinuer();
+                        TextMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle3"));
+                        TextMethods.AttendreContinuer();
+                        TextMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle4"));
+                        TextMethods.AttendreContinuer();
+                        menuChoix1["1"] = "Tenter de résoudre une énigme";
+                        terminalInspecte = true;
                         break;
                     }
-                    Console.Clear();
-                    dansSalle1 = false;
-                    dansSalle2 = true;
-                    TextMethods.RegularWriteLine("Rester ici n'apportera rien de plus.");
-                    TextMethods.RegularWriteLine("Il n'y a rien d'autre à faire qu'avancer.");
-                    TextMethods.RegularWriteLine($"{heroName} pousse la table hors du chemin.");
-                    TextMethods.RegularWriteLine($"Prudemment, {heroName} ouvre la porte.");
-                    TextMethods.AttendreContinuer();
-                    TextMethods.RegularWriteLine($"Une salle plus grande encore s'étent devant {heroName}.");
-                    TextMethods.RegularWriteLine("Rangées après rangées d'ordinateurs remplissent l'espace.");
-                    TextMethods.RegularWriteLine("Ce sont certainement des serveurs, mais qu'hébergent ils ?");
-                    TextMethods.AttendreContinuer();
-                    TextMethods.RegularWriteLine("Dans un coin se trouve un bureau avec un PC accessible.");
-                    TextMethods.RegularWriteLine("Peut être l'inspecter permettrait d'éclairer la situation.");
-                    TextMethods.RegularWriteLine("Au delà de ca, une porte est accessible de l'autre coté de la salle.");
-                    TextMethods.AttendreContinuer();
+                    else if (!finiEnigmesSalle1)
+                    {
+                        TextMethods.RegularWriteLine(StoryText.Get("LectureEnigmeSalle1", heroName));
+                        TextMethods.AttendreContinuer();
+                        Dictionary<string, object> question = DatabaseClass.ObtainRandomQuestion(1);
+                        TextMethods.WriteQuestion(question);
+                        TextMethods.AttendreContinuer();
+                        break;
+                    }
+
                     break;
                 case "2":
-                    if (casiersFouilles)
-                    {
-                        papierLu = true;
-                        TextMethods.RegularWriteLine($"{heroName} lit la feuille sur la table.\nDessus figure un message :");
-                        TextMethods.AttendreContinuer();
-                        TextMethods.RegularWriteLine(StoryText.Get("Papier1", heroName));
-                        preventionSortieSalle1 = "";
-                        TextMethods.AttendreContinuer();
-                        break;
-                    }
                     casiersFouilles = true;
-                    TextMethods.RegularWriteLine($"{heroName} fouille les casiers et placards");
-                    TextMethods.RegularWriteLine("Il ne semble n'y avoir rien d'utile dans les premiers ...");
-                    TextMethods.AttendreContinuer();
-                    TextMethods.RegularWriteLine("Ni dans les suivants ...");
-                    TextMethods.AttendreContinuer();
-                    TextMethods.RegularWriteLine("Oh ! Le dernier placard contient une hache de pompier !");
-                    TextMethods.AttendreContinuer();
-                    TextMethods.RegularWriteLine("Hmmm ... C'est du plastique.");
-                    TextMethods.AttendreContinuer();
-                    TextMethods.RegularWriteLine($"Ca reste relativement solide, et faute de mieux, {heroName} prend la hache.");
+                    menuChoix1.Remove("2");
                     preventionSortieSalle1 = "";
-                    TextMethods.AttendreContinuer();
-                    break;
-
-                case "3":
-                    papierLu = true;
-                    TextMethods.RegularWriteLine($"{heroName} lit la feuille sur la table.\nDessus figure un message :");
-                    TextMethods.AttendreContinuer();
-                    TextMethods.RegularWriteLine(StoryText.Get("Papier1", heroName));
-                    preventionSortieSalle1 = "";
+                    TextMethods.RegularWriteLine(StoryText.Get("CasierFouiller", heroName));
                     TextMethods.AttendreContinuer();
                     break;
             }
 
         }
+
+
+
+
+        /*
+        if (!casiersFouilles)
+        {
+            TextMethods.FastWriteLine("Cette action est irréversible. Est-vous sûr de vouloir quitter la salle ?");
+            TextMethods.RegularWriteLine("1. Sortir   2. Ne pas sortir tout de suite");
+            preventionSortieSalle1 = Console.ReadLine();
+
+        }
+        if (preventionSortieSalle1 == "2")
+        {
+            break;
+        }
+        Console.Clear();
+        dansSalle1 = false;
+        dansSalle2 = true;
+        break;
+        */
+
 
 
 

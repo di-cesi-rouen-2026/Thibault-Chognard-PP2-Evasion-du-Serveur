@@ -1,7 +1,10 @@
 ﻿namespace EscapeGameTC;
 
+using System.Runtime.InteropServices;
+
 public class TextMethods
 {
+    public static Random rand = new Random();
     public static void AttendreContinuer()
     {
         Console.WriteLine();
@@ -46,7 +49,8 @@ public class TextMethods
             
         }
         
-    }public static void SlowWriteLine(string message)
+    }
+    public static void SlowWriteLine(string message)
     {
         for (int i = 0; i < message.Length; i++)
         {
@@ -64,6 +68,29 @@ public class TextMethods
         }
         
     }
+    public static void WriteMenu(Dictionary<string, string> menuItems)
+    {
+        foreach (var kvp in menuItems)
+        {
+            TextMethods.FastWriteLine($"{kvp.Key}. {kvp.Value}\n");
+        }
+    }
 
+    public static void WriteQuestion(Dictionary<string, object> QuestionsDictionnary)
+    {
+        List<string> listeReponses = new();
+        listeReponses.Add(QuestionsDictionnary["Reponse_Correcte"].ToString());
+        listeReponses.Add(QuestionsDictionnary["Reponse_Fausse_1"].ToString());
+        listeReponses.Add(QuestionsDictionnary["Reponse_Fausse_2"].ToString());
 
+        Random.Shared.Shuffle(CollectionsMarshal.AsSpan(listeReponses));
+
+        FastWriteLine($"{QuestionsDictionnary["Question"]}\n");
+
+        foreach(string reponse in listeReponses)
+        {
+            int index = listeReponses.IndexOf(reponse);
+            FastWriteLine($"{index}. {reponse}\n");
+        }
+    }
 }
