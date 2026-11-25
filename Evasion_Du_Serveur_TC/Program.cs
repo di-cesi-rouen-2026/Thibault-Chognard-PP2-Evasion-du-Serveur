@@ -1,13 +1,16 @@
 ﻿using EscapeGameTC;
-using Microsoft.VisualBasic;
+
 internal class Program
 {
     private static void Main(string[] args)
     {
+        //Console.OutputEncoding = System.Text.Encoding.UTF8;
         Console.OutputEncoding = System.Text.Encoding.Unicode;
         Console.ForegroundColor = ConsoleColor.DarkGreen;
 
         DatabaseClass.CreateDatabase();
+
+        int pvRestant = 3;
 
         bool dansSalle1 = true;
         bool casiersFouilles = false;
@@ -35,8 +38,6 @@ internal class Program
 
 
         // Syntaxe =>  MyMethods.SlowWriteLine(StoryText.Get("CléDuTexte", HeroName si besoin));
-
-
 
         Console.WriteLine("Entrer votre nom :");
         string heroName = Console.ReadLine();
@@ -101,7 +102,7 @@ internal class Program
                         TextMethods.RegularWriteLine(StoryText.Get("LectureEnigmeSalle1", heroName));
                         TextMethods.AttendreContinuer();
                         Dictionary<string, object> question = DatabaseClass.ObtainRandomQuestion(1);
-                        TextMethods.WriteQuestion(question);
+                        TextMethods.HandleQuestion(question);
                         TextMethods.AttendreContinuer();
                         break;
                     }

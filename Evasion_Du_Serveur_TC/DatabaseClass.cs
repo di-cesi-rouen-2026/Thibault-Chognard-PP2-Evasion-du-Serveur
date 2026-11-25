@@ -17,7 +17,7 @@ namespace EscapeGameTC
                 Nom TEXT NOT NULL,
                 PRIMARY KEY(ID AUTOINCREMENT),
                 UNIQUE(Nom)
-            );
+            )STRICT;
 
             CREATE TABLE IF NOT EXISTS Partie (
                 ID INTEGER,
@@ -25,7 +25,7 @@ namespace EscapeGameTC
                 ID_Salle INTEGER NOT NULL,
                 PRIMARY KEY(ID AUTOINCREMENT),
                 FOREIGN KEY(ID_Salle) REFERENCES Salle(ID)
-            );
+            )STRICT;
 
             CREATE TABLE IF NOT EXISTS Enigmes (
                 ID INTEGER,
@@ -38,7 +38,7 @@ namespace EscapeGameTC
                 UNIQUE(Question),
                 UNIQUE(Reponse_Correcte),
                 FOREIGN KEY(ID_Salle) REFERENCES Salle(ID)
-            );
+            )STRICT;
             
          
 ";

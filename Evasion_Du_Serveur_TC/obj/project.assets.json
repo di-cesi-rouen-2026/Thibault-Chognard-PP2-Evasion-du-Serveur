@@ -361,11 +361,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thib2\\Desktop\\Fichier CESI\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj",
+      "projectUniqueName": "C:\\Users\\thib2\\Desktop\\Fichiers CESI\\Projets\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj",
       "projectName": "Evasion_Du_Serveur_TC",
-      "projectPath": "C:\\Users\\thib2\\Desktop\\Fichier CESI\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj",
+      "projectPath": "C:\\Users\\thib2\\Desktop\\Fichiers CESI\\Projets\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj",
       "packagesPath": "C:\\Users\\thib2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thib2\\Desktop\\Fichier CESI\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\obj\\",
+      "outputPath": "C:\\Users\\thib2\\Desktop\\Fichiers CESI\\Projets\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -380,6 +380,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -427,7 +428,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

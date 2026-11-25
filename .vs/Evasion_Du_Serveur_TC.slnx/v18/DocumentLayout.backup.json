@@ -1,10 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\thib2\\Desktop\\Stuff\\Coding Trainings\\Evasion_Du_Serveur_TC\\",
+  "WorkspaceRootPath": "C:\\Users\\thib2\\Desktop\\Fichiers CESI\\Projets\\Thibault-Chognard-PP2-Evasion-du-Serveur\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{03AE2E98-8062-75EA-2C39-C2825648BA6B}|Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj|c:\\users\\thib2\\desktop\\stuff\\coding trainings\\evasion_du_serveur_tc\\evasion_du_serveur_tc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{03AE2E98-8062-75EA-2C39-C2825648BA6B}|Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj|c:\\users\\thib2\\desktop\\fichiers cesi\\projets\\thibault-chognard-pp2-evasion-du-serveur\\evasion_du_serveur_tc\\mymethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03AE2E98-8062-75EA-2C39-C2825648BA6B}|Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj|solutionrelative:evasion_du_serveur_tc\\mymethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03AE2E98-8062-75EA-2C39-C2825648BA6B}|Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj|c:\\users\\thib2\\desktop\\fichiers cesi\\projets\\thibault-chognard-pp2-evasion-du-serveur\\evasion_du_serveur_tc\\databaseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03AE2E98-8062-75EA-2C39-C2825648BA6B}|Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj|solutionrelative:evasion_du_serveur_tc\\databaseclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03AE2E98-8062-75EA-2C39-C2825648BA6B}|Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj|c:\\users\\thib2\\desktop\\fichiers cesi\\projets\\thibault-chognard-pp2-evasion-du-serveur\\evasion_du_serveur_tc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{03AE2E98-8062-75EA-2C39-C2825648BA6B}|Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj|solutionrelative:evasion_du_serveur_tc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03AE2E98-8062-75EA-2C39-C2825648BA6B}|Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj|c:\\users\\thib2\\desktop\\fichiers cesi\\projets\\thibault-chognard-pp2-evasion-du-serveur\\evasion_du_serveur_tc\\global.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03AE2E98-8062-75EA-2C39-C2825648BA6B}|Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC.csproj|solutionrelative:evasion_du_serveur_tc\\global.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +26,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\thib2\\Desktop\\Stuff\\Coding Trainings\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\thib2\\Desktop\\Fichiers CESI\\Projets\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\Program.cs",
               "RelativeDocumentMoniker": "Evasion_Du_Serveur_TC\\Program.cs",
-              "ToolTip": "C:\\Users\\thib2\\Desktop\\Stuff\\Coding Trainings\\Evasion_Du_Serveur_TC\\Evasion_Du_Serveur_TC\\Program.cs",
+              "ToolTip": "C:\\Users\\thib2\\Desktop\\Fichiers CESI\\Projets\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\Program.cs",
               "RelativeToolTip": "Evasion_Du_Serveur_TC\\Program.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAQwCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-24T15:04:43.038Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Global.cs",
+              "DocumentMoniker": "C:\\Users\\thib2\\Desktop\\Fichiers CESI\\Projets\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\Global.cs",
+              "RelativeDocumentMoniker": "Evasion_Du_Serveur_TC\\Global.cs",
+              "ToolTip": "C:\\Users\\thib2\\Desktop\\Fichiers CESI\\Projets\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\Global.cs",
+              "RelativeToolTip": "Evasion_Du_Serveur_TC\\Global.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-20T14:23:19.762Z",
+              "WhenOpened": "2026-11-25T13:05:27.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MyMethods.cs",
+              "DocumentMoniker": "C:\\Users\\thib2\\Desktop\\Fichiers CESI\\Projets\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\MyMethods.cs",
+              "RelativeDocumentMoniker": "Evasion_Du_Serveur_TC\\MyMethods.cs",
+              "ToolTip": "C:\\Users\\thib2\\Desktop\\Fichiers CESI\\Projets\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\MyMethods.cs",
+              "RelativeToolTip": "Evasion_Du_Serveur_TC\\MyMethods.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAwwAYAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-24T15:06:00.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DatabaseClass.cs",
+              "DocumentMoniker": "C:\\Users\\thib2\\Desktop\\Fichiers CESI\\Projets\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\DatabaseClass.cs",
+              "RelativeDocumentMoniker": "Evasion_Du_Serveur_TC\\DatabaseClass.cs",
+              "ToolTip": "C:\\Users\\thib2\\Desktop\\Fichiers CESI\\Projets\\Thibault-Chognard-PP2-Evasion-du-Serveur\\Evasion_Du_Serveur_TC\\DatabaseClass.cs",
+              "RelativeToolTip": "Evasion_Du_Serveur_TC\\DatabaseClass.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAgwCgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-24T15:05:04.102Z",
               "EditorCaption": ""
             }
           ]

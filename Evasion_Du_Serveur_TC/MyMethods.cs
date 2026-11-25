@@ -76,21 +76,61 @@ public class TextMethods
         }
     }
 
-    public static void WriteQuestion(Dictionary<string, object> QuestionsDictionnary)
+    public static void HandleQuestion(Dictionary<string, object> questionsDictionnary)
     {
         List<string> listeReponses = new();
-        listeReponses.Add(QuestionsDictionnary["Reponse_Correcte"].ToString());
-        listeReponses.Add(QuestionsDictionnary["Reponse_Fausse_1"].ToString());
-        listeReponses.Add(QuestionsDictionnary["Reponse_Fausse_2"].ToString());
+        listeReponses.Add(questionsDictionnary["Reponse_Correcte"].ToString());
+        listeReponses.Add(questionsDictionnary["Reponse_Fausse_1"].ToString());
+        listeReponses.Add(questionsDictionnary["Reponse_Fausse_2"].ToString());
 
         Random.Shared.Shuffle(CollectionsMarshal.AsSpan(listeReponses));
 
-        FastWriteLine($"{QuestionsDictionnary["Question"]}\n");
-
-        foreach(string reponse in listeReponses)
+        FastWriteLine($"{questionsDictionnary["Question"]}\n");
+        Dictionary<int, string> indexOfAnswer = new();
+        foreach (string reponse in listeReponses)
         {
             int index = listeReponses.IndexOf(reponse);
             FastWriteLine($"{index}. {reponse}\n");
+            indexOfAnswer[index] = reponse;
+        }
+
+        Console.WriteLine("Faite votre choix.");
+        string choixQuestion = Console.ReadLine();
+        while (choixQuestion!="1" && choixQuestion!="2" && choixQuestion != "3")
+        {
+            Console.WriteLine("INPUT ERROR");
+            Console.WriteLine("Tapez 1, 2 ou 3");
+            choixQuestion = Console.ReadLine();
+        }
+        if (indexOfAnswer[int.Parse(choixQuestion)] == questionsDictionnary["Reponse_Correcte"].ToString())
+        {
+
+        }
+        else
+        {
+
         }
     }
+
+    public static void ImprimerPV(int pvRestant,bool dejaPerduPV)
+    {
+        if (!dejaPerduPV)
+        {
+            Console.WriteLine("");
+            return;
+        }
+        string coeurEntier = "💚";
+        string coeurBrise = "❎";
+
+        for(int i = 0; i < pvRestant; i++)
+        {
+            Console.Write(coeurEntier);
+        }
+        for(int i = 0; i < 3-pvRestant; i++)
+        {
+            Console.Write(coeurBrise);
+        }
+        Console.WriteLine("\n");
+    }
+
 }
