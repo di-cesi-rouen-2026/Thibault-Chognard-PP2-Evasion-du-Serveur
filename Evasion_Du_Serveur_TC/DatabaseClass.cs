@@ -1,11 +1,11 @@
 ﻿using Microsoft.Data.Sqlite;
 
-namespace EscapeGameTC
+namespace Evasion_Du_Serveur_TC
 {
     internal class DatabaseClass
     {
         public static SqliteConnection databaseConnection = new SqliteConnection("DataSource=DatabaseEvasionServeur.db");
-        public static Random rand = new Random();
+        
 
         public static void CreateDatabase()
         {
@@ -69,7 +69,7 @@ namespace EscapeGameTC
                         tableSize += 1;
                     }
                     databaseConnection.Close();
-                    int idEnigmeChoisie = rand.Next(0, tableSize);
+                    int idEnigmeChoisie = GlobalVariable.rand.Next(0, tableSize+1);
                     return listeObjetDansTable[idEnigmeChoisie];
                 }
             }

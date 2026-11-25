@@ -1,4 +1,4 @@
-﻿using EscapeGameTC;
+﻿using Evasion_Du_Serveur_TC;
 
 internal class Program
 {
@@ -10,64 +10,40 @@ internal class Program
 
         DatabaseClass.CreateDatabase();
 
-        int pvRestant = 3;
 
-        bool dansSalle1 = true;
-        bool casiersFouilles = false;
-        bool terminalInspecte = false;
-        bool finiEnigmesSalle1 = false;
-        string preventionSortieSalle1 = "";
-        Dictionary<string, string> menuChoix1 = new Dictionary<string, string>
-        {
-            ["1"] = "S'approcher du terminal",
-            ["2"] = "Fouiller les casiers"
-        };
+        // Syntaxe =>  MyMethods.SlowWriteLine(StoryText.Get("CléDuTexte", GlobalVariable.heroName si besoin));
 
-        bool dansSalle2 = false;
-        bool finiAvecPC = false;
-        bool porteOuverteSalle2 = false;
-
-        bool dansSalle3 = false;
-        bool parleAvecHommeFou = false;
-        bool finiAvecSalle3 = false;
-
-        bool dansSalle4 = false;
-        bool dansSalle5 = false;
-        bool dansSalle6 = false;
-
-
-
-        // Syntaxe =>  MyMethods.SlowWriteLine(StoryText.Get("CléDuTexte", HeroName si besoin));
 
         Console.WriteLine("Entrer votre nom :");
-        string heroName = Console.ReadLine();
-        while (string.IsNullOrWhiteSpace(heroName) || string.IsNullOrEmpty(heroName) || heroName.Length > 14)
+        GlobalVariable.heroName = Console.ReadLine();
+        while (string.IsNullOrWhiteSpace(GlobalVariable.heroName) || string.IsNullOrEmpty(GlobalVariable.heroName) || GlobalVariable.heroName.Length > 14)
         {
-            TextMethods.RegularWriteLine("Entrez un nom adéquat (moins de 14 charactères)");
-            heroName = Console.ReadLine();
+            MyMethods.RegularWriteLine("Entrez un nom adéquat (moins de 14 charactères)");
+            GlobalVariable.heroName = Console.ReadLine();
         }
 
         Console.Clear();
 
-        TextMethods.RegularWriteLine($"{heroName} s'éveille sur une table dans un endroit inattendu.");
-        TextMethods.AttendreContinuer();
-        TextMethods.RegularWriteLine(StoryText.Get("Intro1"));
-        TextMethods.AttendreContinuer();
-        TextMethods.RegularWriteLine(StoryText.Get("Intro2", heroName));
-        TextMethods.AttendreContinuer();
+        MyMethods.RegularWriteLine($"{GlobalVariable.heroName} s'éveille sur une table dans un endroit inattendu.");
+        MyMethods.AttendreContinuer();
+        MyMethods.RegularWriteLine(StoryText.Get("Intro1"));
+        MyMethods.AttendreContinuer();
+        MyMethods.RegularWriteLine(StoryText.Get("Intro2", GlobalVariable.heroName));
+        MyMethods.AttendreContinuer();
 
-        while (dansSalle1)
+        while (GlobalVariable.dansSalle1)
         {
             Console.Clear();
-            TextMethods.RegularWriteLine("Que faire ?");
-            TextMethods.WriteMenu(menuChoix1);
+            MyMethods.ImprimerPV();
+            MyMethods.RegularWriteLine("Que faire ?");
+            MyMethods.WriteMenu(GlobalVariable.menuSalle1);
             string choix1 = Console.ReadLine();
 
-            if (!casiersFouilles)
+            if (!GlobalVariable.casiersFouilles)
             {
                 while (choix1 != "1" && choix1 != "2")
                 {
-                    TextMethods.RegularWriteLine("Entrez 1 ou 2 pour choisir quoi faire.");
+                    MyMethods.RegularWriteLine("Entrez 1 ou 2 pour choisir quoi faire.");
                     choix1 = Console.ReadLine();
                 }
             }
@@ -75,7 +51,7 @@ internal class Program
             {
                 while (choix1 != "1")
                 {
-                    TextMethods.RegularWriteLine("Entrez 1 pour continuer.");
+                    MyMethods.RegularWriteLine("Entrez 1 pour continuer.");
                     choix1 = Console.ReadLine();
                 }
             }
@@ -83,37 +59,36 @@ internal class Program
             switch (choix1)
             {
                 case "1":
-                    if (!terminalInspecte)
+                    if (!GlobalVariable.terminalInspecte)
                     {
-                        TextMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle1", heroName));
-                        TextMethods.AttendreContinuer();
-                        TextMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle2", heroName));
-                        TextMethods.AttendreContinuer();
-                        TextMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle3"));
-                        TextMethods.AttendreContinuer();
-                        TextMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle4"));
-                        TextMethods.AttendreContinuer();
-                        menuChoix1["1"] = "Tenter de résoudre une énigme";
-                        terminalInspecte = true;
+                        MyMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle1", GlobalVariable.heroName));
+                        MyMethods.AttendreContinuer();
+                        MyMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle2", GlobalVariable.heroName));
+                        MyMethods.AttendreContinuer();
+                        MyMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle3"));
+                        MyMethods.AttendreContinuer();
+                        MyMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle4"));
+                        MyMethods.AttendreContinuer();
+                        GlobalVariable.menuSalle1["1"] = "Tenter de résoudre une énigme";
+                        GlobalVariable.terminalInspecte = true;
                         break;
                     }
-                    else if (!finiEnigmesSalle1)
+                    else if (!GlobalVariable.finiEnigmesSalle1)
                     {
-                        TextMethods.RegularWriteLine(StoryText.Get("LectureEnigmeSalle1", heroName));
-                        TextMethods.AttendreContinuer();
+                        MyMethods.RegularWriteLine(StoryText.Get("LectureEnigmeSalle1", GlobalVariable.heroName));
+                        MyMethods.AttendreContinuer();
                         Dictionary<string, object> question = DatabaseClass.ObtainRandomQuestion(1);
-                        TextMethods.HandleQuestion(question);
-                        TextMethods.AttendreContinuer();
+                        MyMethods.HandleQuestion(question);
                         break;
                     }
 
                     break;
                 case "2":
-                    casiersFouilles = true;
-                    menuChoix1.Remove("2");
-                    preventionSortieSalle1 = "";
-                    TextMethods.RegularWriteLine(StoryText.Get("CasierFouiller", heroName));
-                    TextMethods.AttendreContinuer();
+                    GlobalVariable.casiersFouilles = true;
+                    GlobalVariable.menuSalle1.Remove("2");
+                    GlobalVariable.preventionSortieSalle1 = "";
+                    MyMethods.RegularWriteLine(StoryText.Get("CasierFouiller", GlobalVariable.heroName));
+                    MyMethods.AttendreContinuer();
                     break;
             }
 
@@ -123,54 +98,54 @@ internal class Program
 
 
         /*
-        if (!casiersFouilles)
+        if (!Global.casiersFouilles)
         {
             TextMethods.FastWriteLine("Cette action est irréversible. Est-vous sûr de vouloir quitter la salle ?");
             TextMethods.RegularWriteLine("1. Sortir   2. Ne pas sortir tout de suite");
             preventionSortieSalle1 = Console.ReadLine();
 
         }
-        if (preventionSortieSalle1 == "2")
+        if (Global.preventionSortieSalle1 == "2")
         {
             break;
         }
         Console.Clear();
-        dansSalle1 = false;
-        dansSalle2 = true;
+        Global.dansSalle1 = false;
+        Global.dansSalle2 = true;
         break;
         */
 
 
 
 
-        while (dansSalle2)
+        while (GlobalVariable.dansSalle2)
         {
             Console.Clear();
-            TextMethods.RegularWriteLine("Que faire ?");
+            MyMethods.RegularWriteLine("Que faire ?");
 
-            if (!finiAvecPC)
+            if (!GlobalVariable.finiAvecPC)
             {
-                TextMethods.RegularWriteLine("1. Sortir par la porte     2. Inspecter le PC      3. Regarder derrière l'écran du PC");
+                MyMethods.RegularWriteLine("1. Sortir par la porte     2. Inspecter le PC      3. Regarder derrière l'écran du PC");
             }
             else
             {
-                TextMethods.RegularWriteLine("1. Sortir par la porte");
+                MyMethods.RegularWriteLine("1. Sortir par la porte");
             }
 
             string choix2 = Console.ReadLine();
-            if (!finiAvecPC)
+            if (!GlobalVariable.finiAvecPC)
             {
                 while (choix2 != "1" && choix2 != "2" && choix2 != "3")
                 {
-                    TextMethods.RegularWriteLine("Entrez une action possible.");
+                    MyMethods.RegularWriteLine("Entrez une action possible.");
                     choix2 = Console.ReadLine();
                 }
             }
-            else if (finiAvecPC)
+            else if (GlobalVariable.finiAvecPC)
             {
                 while (choix2 != "1")
                 {
-                    TextMethods.RegularWriteLine("Entrez une action possible.");
+                    MyMethods.RegularWriteLine("Entrez une action possible.");
                     choix2 = Console.ReadLine();
                 }
             }
@@ -178,39 +153,39 @@ internal class Program
             switch (choix2)
             {
                 case "1":
-                    if (!finiAvecPC)
+                    if (!GlobalVariable.finiAvecPC)
                     {
-                        TextMethods.RegularWriteLine("La porte est fermée.");
-                        TextMethods.RegularWriteLine("Du bruit émane de l'autre coté.");
-                        TextMethods.RegularWriteLine("Quelqu'un semble parler, mais le bruit des serveurs empèche de comprendre ce qui est dit.");
-                        TextMethods.AttendreContinuer();
-                        TextMethods.RegularWriteLine("Il n'y a pas de verrou visible.");
-                        TextMethods.RegularWriteLine("Peut être cette porte est-elle fermée électriquement ?");
-                        TextMethods.RegularWriteLine("Il doit être possible de l'ouvrir à distance, dans ce cas.");
-                        TextMethods.AttendreContinuer();
+                        MyMethods.RegularWriteLine("La porte est fermée.");
+                        MyMethods.RegularWriteLine("Du bruit émane de l'autre coté.");
+                        MyMethods.RegularWriteLine("Quelqu'un semble parler, mais le bruit des serveurs empèche de comprendre ce qui est dit.");
+                        MyMethods.AttendreContinuer();
+                        MyMethods.RegularWriteLine("Il n'y a pas de verrou visible.");
+                        MyMethods.RegularWriteLine("Peut être cette porte est-elle fermée électriquement ?");
+                        MyMethods.RegularWriteLine("Il doit être possible de l'ouvrir à distance, dans ce cas.");
+                        MyMethods.AttendreContinuer();
                         break;
                     }
 
-                    dansSalle2 = false;
-                    dansSalle3 = true;
-                    TextMethods.RegularWriteLine($"{heroName} s'approche de la porte maintenant accessible.");
-                    TextMethods.AttendreContinuer();
-                    TextMethods.RegularWriteLine($"Ouvrant doucement la porte, {heroName} découvre un couloir.");
-                    TextMethods.RegularWriteLine("Trois portes sont visibles.");
-                    TextMethods.RegularWriteLine("La première porte est labellée \"Toilettes\"");
-                    TextMethods.RegularWriteLine("La deuxième porte est labellée \"W. Layla\"");
-                    TextMethods.AttendreContinuer();
-                    TextMethods.RegularWriteLine("Une personne est présente devant la troisième porte. Un homme échevelé bloque le passage.");
-                    TextMethods.RegularWriteLine("Il est recroquevillé et entouré par une large pile de clés USB.");
-                    TextMethods.RegularWriteLine("Il parle dans un language incompréhensible.");
-                    TextMethods.AttendreContinuer();
+                    GlobalVariable.dansSalle2 = false;
+                    GlobalVariable.dansSalle3 = true;
+                    MyMethods.RegularWriteLine($"{GlobalVariable.heroName} s'approche de la porte maintenant accessible.");
+                    MyMethods.AttendreContinuer();
+                    MyMethods.RegularWriteLine($"Ouvrant doucement la porte, {GlobalVariable.heroName} découvre un couloir.");
+                    MyMethods.RegularWriteLine("Trois portes sont visibles.");
+                    MyMethods.RegularWriteLine("La première porte est labellée \"Toilettes\"");
+                    MyMethods.RegularWriteLine("La deuxième porte est labellée \"W. Layla\"");
+                    MyMethods.AttendreContinuer();
+                    MyMethods.RegularWriteLine("Une personne est présente devant la troisième porte. Un homme échevelé bloque le passage.");
+                    MyMethods.RegularWriteLine("Il est recroquevillé et entouré par une large pile de clés USB.");
+                    MyMethods.RegularWriteLine("Il parle dans un language incompréhensible.");
+                    MyMethods.AttendreContinuer();
                     break;
 
                 case "2":
-                    TextMethods.RegularWriteLine("Le PC est allumé et en attente sur un écran de login.");
-                    TextMethods.RegularWriteLine("Un nom d'utilisateur est déjà rentré.");
-                    TextMethods.RegularWriteLine("Il faut maintenant rentrer un mot de passe.");
-                    TextMethods.RegularWriteLine("Entrez un mot de passe ou appuyer sur 2 pour quitter le PC");
+                    MyMethods.RegularWriteLine("Le PC est allumé et en attente sur un écran de login.");
+                    MyMethods.RegularWriteLine("Un nom d'utilisateur est déjà rentré.");
+                    MyMethods.RegularWriteLine("Il faut maintenant rentrer un mot de passe.");
+                    MyMethods.RegularWriteLine("Entrez un mot de passe ou appuyer sur 2 pour quitter le PC");
                     string motDePassePC = Console.ReadLine();
                     if (motDePassePC == "2")
                     {
@@ -219,8 +194,8 @@ internal class Program
                     while (motDePassePC != "Jonathan")
                     {
                         Console.Clear();
-                        TextMethods.RegularWriteLine("Erreur ! Mot de passe incorrect !");
-                        TextMethods.RegularWriteLine("Entrez un mot de passe ou appuyer sur 2 pour quitter le PC");
+                        MyMethods.RegularWriteLine("Erreur ! Mot de passe incorrect !");
+                        MyMethods.RegularWriteLine("Entrez un mot de passe ou appuyer sur 2 pour quitter le PC");
                         motDePassePC = Console.ReadLine();
                         if (motDePassePC == "2")
                         {
@@ -233,30 +208,30 @@ internal class Program
                         break;
                     }
                     Console.Clear();
-                    TextMethods.RegularWriteLine("C'est le bon mot de passe, le PC est accessible !");
-                    TextMethods.RegularWriteLine("Il n'y a presque rien dessus, comme s'il avait été tout juste reformaté.");
-                    TextMethods.RegularWriteLine("Seulement deux applications sont installées.");
-                    TextMethods.RegularWriteLine("La première semble gérer des verrous magnétiques.");
-                    TextMethods.RegularWriteLine("La seconde est un bloc-note.");
-                    TextMethods.AttendreContinuer();
+                    MyMethods.RegularWriteLine("C'est le bon mot de passe, le PC est accessible !");
+                    MyMethods.RegularWriteLine("Il n'y a presque rien dessus, comme s'il avait été tout juste reformaté.");
+                    MyMethods.RegularWriteLine("Seulement deux applications sont installées.");
+                    MyMethods.RegularWriteLine("La première semble gérer des verrous magnétiques.");
+                    MyMethods.RegularWriteLine("La seconde est un bloc-note.");
+                    MyMethods.AttendreContinuer();
 
-                    while (!porteOuverteSalle2)
+                    while (!GlobalVariable.porteOuverteSalle2)
                     {
                         Console.Clear();
-                        TextMethods.RegularWriteLine("Que faire ?");
-                        TextMethods.RegularWriteLine("1. Inspecter le gestionnaire de verrous   2. Lire le bloc-note");
+                        MyMethods.RegularWriteLine("Que faire ?");
+                        MyMethods.RegularWriteLine("1. Inspecter le gestionnaire de verrous   2. Lire le bloc-note");
                         string choixPC = Console.ReadLine();
                         while (choixPC != "1" && choixPC != "2" && choixPC != "3")
                         {
-                            TextMethods.RegularWriteLine("Entrez une action possible.");
+                            MyMethods.RegularWriteLine("Entrez une action possible.");
                             choixPC = Console.ReadLine();
                         }
                         Console.Clear();
                         switch (choixPC)
                         {
                             case "1":
-                                TextMethods.RegularWriteLine("Réaliser une modification requiert un mot de passe");
-                                TextMethods.RegularWriteLine("Entrez un mot de passe ou appuyer sur 2 pour revenir en arrière");
+                                MyMethods.RegularWriteLine("Réaliser une modification requiert un mot de passe");
+                                MyMethods.RegularWriteLine("Entrez un mot de passe ou appuyer sur 2 pour revenir en arrière");
                                 string motDePasseVerrouMagnetique = Console.ReadLine();
                                 if (motDePasseVerrouMagnetique == "2")
                                 {
@@ -266,8 +241,8 @@ internal class Program
                                 while (motDePasseVerrouMagnetique != "SESAME")
                                 {
                                     Console.Clear();
-                                    TextMethods.RegularWriteLine("Erreur ! Mot de passe incorrect !");
-                                    TextMethods.RegularWriteLine("Entrez un mot de passe ou appuyer sur 2 pour revenir en arrière");
+                                    MyMethods.RegularWriteLine("Erreur ! Mot de passe incorrect !");
+                                    MyMethods.RegularWriteLine("Entrez un mot de passe ou appuyer sur 2 pour revenir en arrière");
                                     motDePasseVerrouMagnetique = Console.ReadLine();
                                     if (motDePasseVerrouMagnetique == "2")
                                     {
@@ -281,36 +256,36 @@ internal class Program
                                 }
 
                                 Console.Clear();
-                                porteOuverteSalle2 = true;
-                                finiAvecPC = true;
-                                TextMethods.RegularWriteLine("Le mot de passe est correct !");
-                                TextMethods.RegularWriteLine($"{heroName} tente d'ouvrir la porte de la salle.");
-                                TextMethods.AttendreContinuer();
-                                TextMethods.FastWriteLine("*CLACK*");
-                                TextMethods.RegularWriteLine("La porte est dévérouillée !");
-                                TextMethods.AttendreContinuer();
-                                TextMethods.RegularWriteLine("Il n' y rien de plus à faire sur ce PC.");
-                                TextMethods.AttendreContinuer();
+                                GlobalVariable.porteOuverteSalle2 = true;
+                                GlobalVariable.finiAvecPC = true;
+                                MyMethods.RegularWriteLine("Le mot de passe est correct !");
+                                MyMethods.RegularWriteLine($"{GlobalVariable.heroName} tente d'ouvrir la porte de la salle.");
+                                MyMethods.AttendreContinuer();
+                                MyMethods.FastWriteLine("*CLACK*");
+                                MyMethods.RegularWriteLine("La porte est dévérouillée !");
+                                MyMethods.AttendreContinuer();
+                                MyMethods.RegularWriteLine("Il n' y rien de plus à faire sur ce PC.");
+                                MyMethods.AttendreContinuer();
                                 break;
 
                             case "2":
                                 Console.Clear();
-                                TextMethods.RegularWriteLine($"{heroName} lit le bloc-note.");
-                                TextMethods.AttendreContinuer();
-                                TextMethods.FastWriteLine(
+                                MyMethods.RegularWriteLine($"{GlobalVariable.heroName} lit le bloc-note.");
+                                MyMethods.AttendreContinuer();
+                                MyMethods.FastWriteLine(
                                     "\"Select -w\n  les erreurs ne s'éffacEnt\n   elles s'accumulent tandis que les larmeS croissent\n    chaque action A sa conséquence\n     ton esprit a confirmé Mon existence\n       end codE\"");
-                                TextMethods.AttendreContinuer();
+                                MyMethods.AttendreContinuer();
                                 break;
                         }
                     }
                     break;
                 case "3":
-                    TextMethods.RegularWriteLine("Au dos de l'écran se trouve un post-it.");
-                    TextMethods.RegularWriteLine("Dessus est écrit quelque chose:");
-                    TextMethods.AttendreContinuer();
-                    TextMethods.RegularWriteLine("\"POUR QUE RITCHIE ARRETE D'OUBLIER :");
-                    TextMethods.RegularWriteLine("Qu'est ce qui est jaune et qui attend ?\"");
-                    TextMethods.AttendreContinuer();
+                    MyMethods.RegularWriteLine("Au dos de l'écran se trouve un post-it.");
+                    MyMethods.RegularWriteLine("Dessus est écrit quelque chose:");
+                    MyMethods.AttendreContinuer();
+                    MyMethods.RegularWriteLine("\"POUR QUE RITCHIE ARRETE D'OUBLIER :");
+                    MyMethods.RegularWriteLine("Qu'est ce qui est jaune et qui attend ?\"");
+                    MyMethods.AttendreContinuer();
                     break;
             }
         }
@@ -318,58 +293,58 @@ internal class Program
 
 
 
-        while (dansSalle3)
+        while (GlobalVariable.dansSalle3)
         {
             Console.Clear();
-            TextMethods.RegularWriteLine("Que faire ?");
-            TextMethods.RegularWriteLine("1. Entrer dans les toilettes   2. Entrer dans le bureau de Layla     3. Parler à l'homme étrange");
+            MyMethods.RegularWriteLine("Que faire ?");
+            MyMethods.RegularWriteLine("1. Entrer dans les toilettes   2. Entrer dans le bureau de Layla     3. Parler à l'homme étrange");
 
             string choix3 = Console.ReadLine();
             while (choix3 != "1" && choix3 != "2" && choix3 != "3")
             {
-                TextMethods.RegularWriteLine("Entrez une action possible.");
+                MyMethods.RegularWriteLine("Entrez une action possible.");
                 choix3 = Console.ReadLine();
             }
             Console.Clear();
             switch (choix3)
             {
                 case "1":
-                    TextMethods.RegularWriteLine("A faire");
-                    TextMethods.AttendreContinuer();
+                    MyMethods.RegularWriteLine("A faire");
+                    MyMethods.AttendreContinuer();
                     break;
                 case "2":
-                    if (!finiAvecSalle3)
+                    if (!GlobalVariable.finiAvecSalle3)
                     {
-                        TextMethods.RegularWriteLine("La porte est fermée.");
-                        TextMethods.RegularWriteLine("Elle est bien trop solide pour être forcée ouverte");
-                        TextMethods.RegularWriteLine("Il va falloir trouver une clé pour l'ouvrir.");
-                        TextMethods.AttendreContinuer();
+                        MyMethods.RegularWriteLine("La porte est fermée.");
+                        MyMethods.RegularWriteLine("Elle est bien trop solide pour être forcée ouverte");
+                        MyMethods.RegularWriteLine("Il va falloir trouver une clé pour l'ouvrir.");
+                        MyMethods.AttendreContinuer();
                         break;
                     }
                     break;
                 case "3":
-                    if (!finiAvecSalle3 && !parleAvecHommeFou)
+                    if (!GlobalVariable.finiAvecSalle3 && !GlobalVariable.parleAvecHommeFou)
                     {
-                        parleAvecHommeFou = true;
-                        TextMethods.RegularWriteLine($"{heroName} tente de parler à l'homme étrange.");
-                        TextMethods.AttendreContinuer();
+                        GlobalVariable.parleAvecHommeFou = true;
+                        MyMethods.RegularWriteLine($"{GlobalVariable.heroName} tente de parler à l'homme étrange.");
+                        MyMethods.AttendreContinuer();
                         Console.ForegroundColor = ConsoleColor.Red;
-                        TextMethods.SlowWriteLine("Ȉ̵̟͍͝l̷̲̹̕ ̷̻͉͊d̵͚̣̀o̴̙͈͌i̶̤͒ṭ̸͎̓ ̵̪́ề̵̪t̵̳͆r̷͔̞̐̽e̷͓̽ ̸͈͔̎p̷͔̤͆͐r̵̥̓̊͜ô̷̘̺c̷̹̓h̴̨̨͌è̸̼.̴͖̾");
-                        TextMethods.SlowWriteLine("̵̩͌͂L̷̳͗̚͜e̶̡̓s̴͍̭̅͘ ̷̹͆e̵̙̳̒r̶̡̟̋͌r̴̪̈́͘ë̶̩̮̓u̷̮̥̓r̴̠͗͂s̵̰̎͝ ̵̡̈́a̷̛̳̞̓c̶̪̔ͅc̴̨̓͝ů̸̲̼m̷͎̓u̶̡̹͊͑l̶͔̄é̴̢͔̾e̵̱̟͆s̷̭̏͒.̶̼̆");
-                        TextMethods.SlowWriteLine("̵̡̠̈Ĩ̴͈͔̈́l̴͉̟̿ ̶̺̑͋e̵̳̰̎s̵͖̀͜͠t̸̖̺̑̈ ̸͚͘c̵̙̅ờ̷͖m̷̢̞͂͑p̸̃ͅl̶̬̩͑̋ȩ̸̞̀̚ṭ̸̳̔̅.̷̤̂");
-                        TextMethods.SlowWriteLine("̴̨͕̽̏C̶̹͂ͅ'̴̯̃̇ḙ̸̿͆n̸̤̉̓ ̵̺̜̍̄e̵̥̗̐͝s̵̺̫͆ţ̶̈ ̶̢̼͂f̵̯̑î̴̙͠n̶̻͆i̵̛̤ ̵̯̾̈d̵͈̄e̶̫͑̇ ̴̭̻̉ṉ̶̤̍̓o̴̭͌̃ͅu̵̺͈͛̎s̴̱̬͝.̵͓̭̌̀");
-                        TextMethods.SlowWriteLine("̵̧̪͒̚I̷̼̤͂ĺ̸͍̳̐ ̶͎͙̾̾ḙ̵̫̌s̶͚̭͘t̶̙̬̓ ̶͙̏d̸̛̟̻̀é̶̻͛j̵̳͌̆à̴̩͛͌ ̴̖̂è̴͍̗n̴̡͋̈́ͅ ̷͍̈́c̷̢̃h̸͈͗â̷̤c̸͚̋̎u̶͍̿̃n̵̨͛̽ ̸̩̈̒d̵̬͝é̵̜͝ ̵̭̿̐n̷͍̰͂͘o̶͎͋ů̸̳̭͝s̶̙͓̅̔.̶̳̳̔");
-                        TextMethods.SlowWriteLine("̴̡̋̓͜C̷̤̒̅h̸̜͂ä̸̢̬͆q̸̹̮͐̀u̶̫̟̓e̶̎͜͠ ̸̫̰̄c̸̫̺̆͝i̸̢̬͛̕r̵͇̅ç̶̺͛ü̷̹͙ȋ̸̦̒t̶͕̠͒̀ ̴̣͑̎ĕ̷͎s̴̰̚ṱ̶͑ ̸̧͓͋u̵̗̟͗n̷̘̰͆ ̴̟͗n̵̜̜͐ȏ̶̲͑u̵̮̎̏v̵̦͐̋e̵̮̅́ͅă̵̙̫͝ǘ̵̖̫ ̷̛͖r̸̻̠͆ê̵̲̫̆v̴͓̬̊͝ẻ̷̳͕̈ ̶̦͛̑d̷̞̙̀ę̷̛́̑v̸̻̓o̷̬͙͊̆i̸̥͂̅l̴̜̘̍͝é̷̞̠̓̚.̶͉̖̊̈́");
+                        MyMethods.SlowWriteLine("Ȉ̵̟͍͝l̷̲̹̕ ̷̻͉͊d̵͚̣̀o̴̙͈͌i̶̤͒ṭ̸͎̓ ̵̪́ề̵̪t̵̳͆r̷͔̞̐̽e̷͓̽ ̸͈͔̎p̷͔̤͆͐r̵̥̓̊͜ô̷̘̺c̷̹̓h̴̨̨͌è̸̼.̴͖̾");
+                        MyMethods.SlowWriteLine("̵̩͌͂L̷̳͗̚͜e̶̡̓s̴͍̭̅͘ ̷̹͆e̵̙̳̒r̶̡̟̋͌r̴̪̈́͘ë̶̩̮̓u̷̮̥̓r̴̠͗͂s̵̰̎͝ ̵̡̈́a̷̛̳̞̓c̶̪̔ͅc̴̨̓͝ů̸̲̼m̷͎̓u̶̡̹͊͑l̶͔̄é̴̢͔̾e̵̱̟͆s̷̭̏͒.̶̼̆");
+                        MyMethods.SlowWriteLine("̵̡̠̈Ĩ̴͈͔̈́l̴͉̟̿ ̶̺̑͋e̵̳̰̎s̵͖̀͜͠t̸̖̺̑̈ ̸͚͘c̵̙̅ờ̷͖m̷̢̞͂͑p̸̃ͅl̶̬̩͑̋ȩ̸̞̀̚ṭ̸̳̔̅.̷̤̂");
+                        MyMethods.SlowWriteLine("̴̨͕̽̏C̶̹͂ͅ'̴̯̃̇ḙ̸̿͆n̸̤̉̓ ̵̺̜̍̄e̵̥̗̐͝s̵̺̫͆ţ̶̈ ̶̢̼͂f̵̯̑î̴̙͠n̶̻͆i̵̛̤ ̵̯̾̈d̵͈̄e̶̫͑̇ ̴̭̻̉ṉ̶̤̍̓o̴̭͌̃ͅu̵̺͈͛̎s̴̱̬͝.̵͓̭̌̀");
+                        MyMethods.SlowWriteLine("̵̧̪͒̚I̷̼̤͂ĺ̸͍̳̐ ̶͎͙̾̾ḙ̵̫̌s̶͚̭͘t̶̙̬̓ ̶͙̏d̸̛̟̻̀é̶̻͛j̵̳͌̆à̴̩͛͌ ̴̖̂è̴͍̗n̴̡͋̈́ͅ ̷͍̈́c̷̢̃h̸͈͗â̷̤c̸͚̋̎u̶͍̿̃n̵̨͛̽ ̸̩̈̒d̵̬͝é̵̜͝ ̵̭̿̐n̷͍̰͂͘o̶͎͋ů̸̳̭͝s̶̙͓̅̔.̶̳̳̔");
+                        MyMethods.SlowWriteLine("̴̡̋̓͜C̷̤̒̅h̸̜͂ä̸̢̬͆q̸̹̮͐̀u̶̫̟̓e̶̎͜͠ ̸̫̰̄c̸̫̺̆͝i̸̢̬͛̕r̵͇̅ç̶̺͛ü̷̹͙ȋ̸̦̒t̶͕̠͒̀ ̴̣͑̎ĕ̷͎s̴̰̚ṱ̶͑ ̸̧͓͋u̵̗̟͗n̷̘̰͆ ̴̟͗n̵̜̜͐ȏ̶̲͑u̵̮̎̏v̵̦͐̋e̵̮̅́ͅă̵̙̫͝ǘ̵̖̫ ̷̛͖r̸̻̠͆ê̵̲̫̆v̴͓̬̊͝ẻ̷̳͕̈ ̶̦͛̑d̷̞̙̀ę̷̛́̑v̸̻̓o̷̬͙͊̆i̸̥͂̅l̴̜̘̍͝é̷̞̠̓̚.̶͉̖̊̈́");
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        TextMethods.AttendreContinuer();
-                        TextMethods.RegularWriteLine("Impossible de tirer plus de lui ...");
-                        TextMethods.AttendreContinuer();
+                        MyMethods.AttendreContinuer();
+                        MyMethods.RegularWriteLine("Impossible de tirer plus de lui ...");
+                        MyMethods.AttendreContinuer();
                         break;
                     }
                     else
                     {
-                        TextMethods.RegularWriteLine($"{heroName} tente de parler à l'homme étrange.");
-                        TextMethods.RegularWriteLine("Impossible de tirer plus de lui ...");
+                        MyMethods.RegularWriteLine($"{GlobalVariable.heroName} tente de parler à l'homme étrange.");
+                        MyMethods.RegularWriteLine("Impossible de tirer plus de lui ...");
 
                     }
 

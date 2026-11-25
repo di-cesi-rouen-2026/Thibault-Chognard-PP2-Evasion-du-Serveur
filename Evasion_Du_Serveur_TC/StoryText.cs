@@ -2,12 +2,25 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EscapeGameTC
+namespace Evasion_Du_Serveur_TC
 {
     internal class StoryText
     {
         private static readonly Dictionary<string, string> textes = new()
         {
+            ["PrendreDegat1"] = "\"Ahhh, voilà ce que à quoi je m'attendais !\"\n"+
+                "Un instant seulement après avoir choisi une réponse, {0} ressent un choc électrique brutal.\n" +
+                "\"Ca pique, n'est-ce pas ? Tu comprends maintenant que je ne veux que ton bien quand je te dit d'abandonner, ahahaha !\"\n" +
+                "{0} sent qu'il ne sera pas possible de survivre à beaucoup plus d'erreur...\n",
+
+            ["PrendreDegat2"] = "AIE ! Mauvais choix !\n"+
+                "{0} est encore victime d'un choc électrique violent, tordant son corps à ses limites et l'empéchant de respirer plusieurs secondes.\n" +
+                "La douleur est grande mais il n'est pas question d'abandonner.\n",
+
+            ["PrendreDegat3"] = "Un choc plus vif encore déferle à travers le corps de {0}.\n"+
+                "La vision est dérobée à {0}, mais ce coup-ci, elle ne revient pas.\n" +
+                "{0} s'effondre, sans vie.\n",
+
             ["Intro1"] = "Est ce l'intérieur du datacenter du CESI ?\n" +
                 "L'endroit semble avoir été saccagé.\n" +
                 "Des placards et casiers sont éparpillés, certains renversés.\n" +
@@ -43,7 +56,17 @@ namespace EscapeGameTC
                 "Une question et trois bouttons avec des réponses différentes.\n" +
                 "{0} ne sait pas quelles répercussions découlerons de choisir la mauvaise réponse.\n" +
                 "Rien ne semble presser une réponse rapide.\n" +
-                "Mieux vaut prendre son temps pour réfléchir."
+                "Mieux vaut prendre son temps pour réfléchir.",
+
+
+
+
+
+            ["Défaite1"] = "\"AHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHA" +
+            "AHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHA" +
+            "AHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHA\"\n",
+            ["Défaite1.1"] = "\"Ahhhhhhh, c'est drôle à chaque fois.\"\n"
+
         };
 
         public static string Get(string cle, params object[] args)

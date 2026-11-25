@@ -1,8 +1,8 @@
-﻿namespace EscapeGameTC;
+﻿namespace Evasion_Du_Serveur_TC;
 
 using System.Runtime.InteropServices;
 
-public class TextMethods
+public class MyMethods
 {
     public static Random rand = new Random();
     public static void AttendreContinuer()
@@ -72,7 +72,7 @@ public class TextMethods
     {
         foreach (var kvp in menuItems)
         {
-            TextMethods.FastWriteLine($"{kvp.Key}. {kvp.Value}\n");
+            MyMethods.FastWriteLine($"{kvp.Key}. {kvp.Value}\n");
         }
     }
 
@@ -90,8 +90,8 @@ public class TextMethods
         foreach (string reponse in listeReponses)
         {
             int index = listeReponses.IndexOf(reponse);
-            FastWriteLine($"{index}. {reponse}\n");
-            indexOfAnswer[index] = reponse;
+            FastWriteLine($"{index+1}. {reponse}\n");
+            indexOfAnswer[index+1] = reponse;
         }
 
         Console.WriteLine("Faite votre choix.");
@@ -108,29 +108,75 @@ public class TextMethods
         }
         else
         {
-
+            PrendreDegat();
         }
     }
 
-    public static void ImprimerPV(int pvRestant,bool dejaPerduPV)
+    public static int ModifierPV(int modification)
     {
-        if (!dejaPerduPV)
+        GlobalVariable.pvRestant += modification;
+        return GlobalVariable.pvRestant;
+    }
+    public static void ImprimerPV()
+    {
+        if (!GlobalVariable.dejaPerduPV)
         {
-            Console.WriteLine("");
+            Console.WriteLine("\n");
             return;
         }
-        string coeurEntier = "💚";
-        string coeurBrise = "❎";
+        string coeurEntier = "♥";
+        string coeurBrise = "✕";
 
-        for(int i = 0; i < pvRestant; i++)
+        for(int i = 0; i < GlobalVariable.pvRestant; i++)
         {
-            Console.Write(coeurEntier);
+            Console.Write(coeurEntier + " ");
         }
-        for(int i = 0; i < 3-pvRestant; i++)
+        for(int i = 0; i < 3-GlobalVariable.pvRestant; i++)
         {
-            Console.Write(coeurBrise);
+            Console.Write(coeurBrise + " ");
         }
         Console.WriteLine("\n");
     }
 
+    public static void PrendreDegat()
+    {
+        if (!GlobalVariable.dejaPerduPV)
+        {
+            GlobalVariable.dejaPerduPV = true;
+            Console.Clear();
+            MyMethods.RegularWriteLine(StoryText.Get("PrendreDegat1", GlobalVariable.heroName));
+            AttendreContinuer();
+        }
+        else if (GlobalVariable.pvRestant >1)
+        {
+            Console.Clear();
+            MyMethods.RegularWriteLine(StoryText.Get("PrendreDegat2", GlobalVariable.heroName));
+            AttendreContinuer();
+        }
+        else
+        {
+            Console.Clear();
+            MyMethods.RegularWriteLine(StoryText.Get("PrendreDegat3", GlobalVariable.heroName));
+            AttendreContinuer();
+        }
+        ModifierPV(-1);
+        if(GlobalVariable.pvRestant <= 0)
+        {
+            DefaiteHero();
+        }
+    }
+
+    public static void DefaiteHero()
+    {
+        if (GlobalVariable.dansSalle1)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            MyMethods.FastWriteLine(StoryText.Get("Défaite1", GlobalVariable.heroName));
+            AttendreContinuer();
+            MyMethods.SlowWriteLine(StoryText.Get("Défaite1.1", GlobalVariable.heroName));
+            AttendreContinuer();
+            Environment.Exit(0);
+        }
+    }
 }
