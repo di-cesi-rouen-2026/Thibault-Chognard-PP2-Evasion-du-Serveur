@@ -4,7 +4,6 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        //Console.OutputEncoding = System.Text.Encoding.UTF8;
         Console.OutputEncoding = System.Text.Encoding.Unicode;
         Console.ForegroundColor = ConsoleColor.DarkGreen;
 
@@ -13,112 +12,19 @@ internal class Program
 
         // Syntaxe =>  MyMethods.SlowWriteLine(StoryText.Get("CléDuTexte", GlobalVariable.heroName si besoin));
 
+        Intro.JeuIntro();
 
-        Console.WriteLine("Entrer votre nom :");
-        GlobalVariable.heroName = Console.ReadLine();
-        while (string.IsNullOrWhiteSpace(GlobalVariable.heroName) || string.IsNullOrEmpty(GlobalVariable.heroName) || GlobalVariable.heroName.Length > 14)
-        {
-            MyMethods.RegularWriteLine("Entrez un nom adéquat (moins de 14 charactères)");
-            GlobalVariable.heroName = Console.ReadLine();
-        }
-
-        Console.Clear();
-
-        MyMethods.RegularWriteLine($"{GlobalVariable.heroName} s'éveille sur une table dans un endroit inattendu.");
-        MyMethods.AttendreContinuer();
-        MyMethods.RegularWriteLine(StoryText.Get("Intro1"));
-        MyMethods.AttendreContinuer();
-        MyMethods.RegularWriteLine(StoryText.Get("Intro2", GlobalVariable.heroName));
-        MyMethods.AttendreContinuer();
-
-        while (GlobalVariable.dansSalle1)
-        {
-            Console.Clear();
-            MyMethods.ImprimerPV();
-            MyMethods.RegularWriteLine("Que faire ?");
-            MyMethods.WriteMenu(GlobalVariable.menuSalle1);
-            string choix1 = Console.ReadLine();
-
-            if (!GlobalVariable.casiersFouilles)
-            {
-                while (choix1 != "1" && choix1 != "2")
-                {
-                    MyMethods.RegularWriteLine("Entrez 1 ou 2 pour choisir quoi faire.");
-                    choix1 = Console.ReadLine();
-                }
-            }
-            else
-            {
-                while (choix1 != "1")
-                {
-                    MyMethods.RegularWriteLine("Entrez 1 pour continuer.");
-                    choix1 = Console.ReadLine();
-                }
-            }
-            Console.Clear();
-            switch (choix1)
-            {
-                case "1":
-                    if (!GlobalVariable.terminalInspecte)
-                    {
-                        MyMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle1", GlobalVariable.heroName));
-                        MyMethods.AttendreContinuer();
-                        MyMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle2", GlobalVariable.heroName));
-                        MyMethods.AttendreContinuer();
-                        MyMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle3"));
-                        MyMethods.AttendreContinuer();
-                        MyMethods.RegularWriteLine(StoryText.Get("ApprocheTerminalSalle4"));
-                        MyMethods.AttendreContinuer();
-                        GlobalVariable.menuSalle1["1"] = "Tenter de résoudre une énigme";
-                        GlobalVariable.terminalInspecte = true;
-                        break;
-                    }
-                    else if (!GlobalVariable.finiEnigmesSalle1)
-                    {
-                        MyMethods.RegularWriteLine(StoryText.Get("LectureEnigmeSalle1", GlobalVariable.heroName));
-                        MyMethods.AttendreContinuer();
-                        Dictionary<string, object> question = DatabaseClass.ObtainRandomQuestion(1);
-                        MyMethods.HandleQuestion(question);
-                        break;
-                    }
-
-                    break;
-                case "2":
-                    GlobalVariable.casiersFouilles = true;
-                    GlobalVariable.menuSalle1.Remove("2");
-                    GlobalVariable.preventionSortieSalle1 = "";
-                    MyMethods.RegularWriteLine(StoryText.Get("CasierFouiller", GlobalVariable.heroName));
-                    MyMethods.AttendreContinuer();
-                    break;
-            }
-
-        }
+        Salle_1.JeuSalle1();
 
 
 
 
-        /*
-        if (!Global.casiersFouilles)
-        {
-            TextMethods.FastWriteLine("Cette action est irréversible. Est-vous sûr de vouloir quitter la salle ?");
-            TextMethods.RegularWriteLine("1. Sortir   2. Ne pas sortir tout de suite");
-            preventionSortieSalle1 = Console.ReadLine();
-
-        }
-        if (Global.preventionSortieSalle1 == "2")
-        {
-            break;
-        }
-        Console.Clear();
-        Global.dansSalle1 = false;
-        Global.dansSalle2 = true;
-        break;
-        */
 
 
 
 
-        while (GlobalVariable.dansSalle2)
+
+        while (GlobalVariable.salleActuelle.Peek() == "2")
         {
             Console.Clear();
             MyMethods.RegularWriteLine("Que faire ?");

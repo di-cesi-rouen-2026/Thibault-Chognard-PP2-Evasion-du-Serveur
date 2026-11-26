@@ -12,22 +12,23 @@ namespace Evasion_Du_Serveur_TC
             databaseConnection.Open();
             var tableCmd = databaseConnection.CreateCommand();
             tableCmd.CommandText = @"
-            CREATE TABLE IF NOT EXISTS Salle (
+                CREATE TABLE IF NOT EXISTS Partie(
                 ID INTEGER,
-                Nom TEXT NOT NULL,
+                PV_Joueur INTEGER NOT NULL,
+                Obtenu_Hache INT NOT NULL,
+                Nom_Joueur TEXT NOT NULL,
                 PRIMARY KEY(ID AUTOINCREMENT),
-                UNIQUE(Nom)
+                UNIQUE(Nom_Joueur)
             )STRICT;
 
-            CREATE TABLE IF NOT EXISTS Partie (
+            CREATE TABLE IF NOT EXISTS Salle(
                 ID INTEGER,
-                Nom TEXT NOT NULL,
-                ID_Salle INTEGER NOT NULL,
+                Nom_Salle TEXT NOT NULL,
                 PRIMARY KEY(ID AUTOINCREMENT),
-                FOREIGN KEY(ID_Salle) REFERENCES Salle(ID)
+                UNIQUE(Nom_Salle)
             )STRICT;
 
-            CREATE TABLE IF NOT EXISTS Enigmes (
+            CREATE TABLE IF NOT EXISTS Enigmes(
                 ID INTEGER,
                 Question TEXT NOT NULL,
                 Reponse_Correcte TEXT NOT NULL,
@@ -39,9 +40,14 @@ namespace Evasion_Du_Serveur_TC
                 UNIQUE(Reponse_Correcte),
                 FOREIGN KEY(ID_Salle) REFERENCES Salle(ID)
             )STRICT;
-            
-         
-";
+
+            CREATE TABLE IF NOT EXISTS Sauvegarder(
+                ID_Partie INTEGER,
+                ID_Salle INTEGER,
+                PRIMARY KEY(ID_Partie, ID_Salle),
+                FOREIGN KEY(ID_Partie) REFERENCES Partie(ID),
+                FOREIGN KEY(ID_Salle) REFERENCES Salle(ID)
+            )STRICT;";
             tableCmd.ExecuteNonQuery();
             databaseConnection.Close();
         }
