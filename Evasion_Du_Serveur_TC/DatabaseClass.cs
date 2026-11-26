@@ -81,5 +81,18 @@ namespace Evasion_Du_Serveur_TC
             }
             
         }
+
+        public static void CréerNouvellePartie(string nomHero)
+        {
+            databaseConnection.Open();
+            var tableCmd = databaseConnection.CreateCommand();
+             tableCmd.CommandText = $"INSERT INTO Partie SET (Nom_Joueur,PV_Joueur,Obtenu_Hache,) VALUES (@nomHero,@PV_Restant,@Obtenu_Hache)";
+            tableCmd.Parameters.AddWithValue("@nomHero", nomHero);
+            tableCmd.Parameters.AddWithValue("@PV_Restant", 3);
+            tableCmd.Parameters.AddWithValue("@Obtenu_Hache", 0);
+
+            tableCmd.ExecuteNonQuery();
+            databaseConnection.Close();
+        }
     }
 }
