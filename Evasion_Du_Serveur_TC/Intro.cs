@@ -9,10 +9,22 @@ namespace Evasion_Du_Serveur_TC
         public static void JeuIntro()
         {
             Console.WriteLine("Entrer votre nom :");
-            GlobalVariable.heroName = Console.ReadLine();
-            while (string.IsNullOrWhiteSpace(GlobalVariable.heroName) || string.IsNullOrEmpty(GlobalVariable.heroName) || GlobalVariable.heroName.Length > 20)
+            GlobalVariable.playerName = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(GlobalVariable.heroName) || string.IsNullOrEmpty(GlobalVariable.heroName) || GlobalVariable.heroName.Length > 16)
             {
-                MyMethods.RegularWriteLine("Entrez un nom adéquat (moins de 20 charactères)");
+                MyMethods.RegularWriteLine("Entrez un nom adéquat (moins de 16 charactères)");
+                GlobalVariable.playerName = Console.ReadLine();
+            }
+
+
+
+
+
+            Console.WriteLine("Entrer le nom de votre personnage :");
+            GlobalVariable.heroName = Console.ReadLine();
+            while (string.IsNullOrWhiteSpace(GlobalVariable.heroName) || string.IsNullOrEmpty(GlobalVariable.heroName) || GlobalVariable.heroName.Length > 16)
+            {
+                MyMethods.RegularWriteLine("Entrez un nom adéquat (moins de 16 charactères)");
                 GlobalVariable.heroName = Console.ReadLine();
             }
 

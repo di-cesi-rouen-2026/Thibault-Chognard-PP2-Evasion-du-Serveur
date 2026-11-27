@@ -7,13 +7,15 @@ namespace Evasion_Du_Serveur_TC
     internal class GlobalVariable
     {
         public static Random rand = new Random();
+        public static string playerName = "";
         public static int pvRestant = 3;
         public static bool dejaPerduPV = false;
         public static string heroName = "";
 
-        public static Stack<string> salleActuelle = new();
+        public static int salleActuelle = 1;
         public static bool dansSalle1 = true;
-        public static bool casiersFouilles = false;
+        public static bool hacheObtenue = false;
+        public static bool hacheUtilisee = false;
         public static bool terminalInspecte = false;
         public static bool finiPremiereEnigme = false;
         public static bool finiEnigmesSalle1 = false;

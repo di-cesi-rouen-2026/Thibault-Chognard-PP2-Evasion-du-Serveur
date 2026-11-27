@@ -76,6 +76,22 @@ public class MyMethods
         }
     }
 
+    public static bool ChangerIntEnBool(int nombre)
+    {
+        if(nombre == 0)
+        {
+            return false;
+        }
+        else if(nombre == 1)
+        {
+            return true;
+        }
+        else
+        {
+            throw new ArgumentException($"Cannot cast {nombre} as a boolean !");
+        }
+    }
+
     public static void HandleQuestion(Dictionary<string, object> questionsDictionnary)
     {
         List<string> listeReponses = new();

@@ -17,7 +17,7 @@ namespace Evasion_Du_Serveur_TC
                 MyMethods.WriteMenu(GlobalVariable.menuSalle1);
                 string choix1 = Console.ReadLine();
 
-                if (!GlobalVariable.casiersFouilles)
+                if (!GlobalVariable.hacheObtenue)
                 {
                     while (choix1 != "1" && choix1 != "2")
                     {
@@ -70,7 +70,7 @@ namespace Evasion_Du_Serveur_TC
                         }
                         break;
                     case "2":
-                        GlobalVariable.casiersFouilles = true;
+                        GlobalVariable.hacheObtenue = true;
                         GlobalVariable.menuSalle1.Remove("2");
                         GlobalVariable.preventionSortieSalle1 = "";
                         MyMethods.RegularWriteLine(StoryText.Get("CasierFouiller", GlobalVariable.heroName));
