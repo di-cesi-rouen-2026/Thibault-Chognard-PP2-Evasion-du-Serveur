@@ -9,7 +9,7 @@ namespace Evasion_Du_Serveur_TC
     {
         public static void JeuSalle1()
         {
-            while (GlobalVariable.salleActuelle.Peek() == "1")
+            while (GlobalVariable.salleActuelle == 1)
             {
                 Console.Clear();
                 MyMethods.ImprimerPV();
@@ -53,20 +53,27 @@ namespace Evasion_Du_Serveur_TC
                         }
                         else if (!GlobalVariable.finiEnigmesSalle1)
                         {
-                            if (!GlobalVariable.finiPremiereEnigme)
+                            int compteurEnigmesFinie = 0;
+                            List<Dictionary<string, object>> questionsDejaUtilise = new();
+                            MyMethods.RegularWriteLine(StoryText.Get("LectureEnigmeSalle1", GlobalVariable.heroName));
+                            MyMethods.AttendreContinuer();
+                            while (compteurEnigmesFinie < 5)
                             {
-                                MyMethods.RegularWriteLine(StoryText.Get("LectureEnigmeSalle1", GlobalVariable.heroName));
-                                MyMethods.AttendreContinuer();
+                                Console.Clear();
                                 Dictionary<string, object> question = DatabaseClass.ObtainRandomQuestion(1);
+                                while (questionsDejaUtilise.Contains(question))
+                                {
+                                    question = DatabaseClass.ObtainRandomQuestion(1);
+                                }
                                 MyMethods.HandleQuestion(question);
-                                break;
+                                compteurEnigmesFinie++;
+                                questionsDejaUtilise.Add(question);
                             }
-                            else
-                            {
-                                Dictionary<string, object> question = DatabaseClass.ObtainRandomQuestion(1);
-                                MyMethods.HandleQuestion(question);
-                                break;
-                            }
+
+
+                            GlobalVariable.finiEnigmesSalle1 = true;
+                            GlobalVariable.menuSalle1["1"] = "Sortir de la salle";
+                            break;
                         }
                         break;
                     case "2":

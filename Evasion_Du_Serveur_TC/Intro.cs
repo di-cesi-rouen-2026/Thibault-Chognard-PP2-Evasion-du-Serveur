@@ -10,7 +10,7 @@ namespace Evasion_Du_Serveur_TC
         {
             Console.WriteLine("Entrer votre nom :");
             GlobalVariable.playerName = Console.ReadLine();
-            while (string.IsNullOrWhiteSpace(GlobalVariable.heroName) || string.IsNullOrEmpty(GlobalVariable.heroName) || GlobalVariable.heroName.Length > 16)
+            while (string.IsNullOrWhiteSpace(GlobalVariable.playerName) || string.IsNullOrEmpty(GlobalVariable.playerName) || GlobalVariable.playerName.Length > 16)
             {
                 MyMethods.RegularWriteLine("Entrez un nom adéquat (moins de 16 charactères)");
                 GlobalVariable.playerName = Console.ReadLine();
@@ -37,7 +37,6 @@ namespace Evasion_Du_Serveur_TC
             MyMethods.RegularWriteLine(StoryText.Get("Intro2", GlobalVariable.heroName));
             MyMethods.AttendreContinuer();
 
-            GlobalVariable.salleActuelle.Push("1");
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Evasion_Du_Serveur_TC;
+using System.Numerics;
 
 internal class Program
 {
@@ -8,9 +9,13 @@ internal class Program
         Console.ForegroundColor = ConsoleColor.DarkGreen;
 
         DatabaseClass.CreateDatabase();
-
+        DatabaseClass.FillDatabaseWithInitialValues();
 
         // Syntaxe =>  MyMethods.SlowWriteLine(StoryText.Get("CléDuTexte", GlobalVariable.heroName si besoin));
+
+        int a = 17 % 3;
+        Console.WriteLine(a);
+        MyMethods.AttendreContinuer();
 
         Intro.JeuIntro();
 
@@ -24,7 +29,7 @@ internal class Program
 
 
 
-        while (GlobalVariable.salleActuelle.Peek() == "2")
+        while (GlobalVariable.salleActuelle == 2)
         {
             Console.Clear();
             MyMethods.RegularWriteLine("Que faire ?");

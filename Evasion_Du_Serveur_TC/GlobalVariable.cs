@@ -11,13 +11,12 @@ namespace Evasion_Du_Serveur_TC
         public static int pvRestant = 3;
         public static bool dejaPerduPV = false;
         public static string heroName = "";
-
         public static int salleActuelle = 1;
-        public static bool dansSalle1 = true;
+
+
         public static bool hacheObtenue = false;
         public static bool hacheUtilisee = false;
         public static bool terminalInspecte = false;
-        public static bool finiPremiereEnigme = false;
         public static bool finiEnigmesSalle1 = false;
         public static string preventionSortieSalle1 = "";
         public static Dictionary<string, string> menuSalle1 = new Dictionary<string, string>

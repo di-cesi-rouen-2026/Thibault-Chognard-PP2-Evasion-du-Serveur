@@ -101,8 +101,8 @@ public class MyMethods
 
         Random.Shared.Shuffle(CollectionsMarshal.AsSpan(listeReponses));
 
-        FastWriteLine($"{questionsDictionnary["Question"]}\n");
         Dictionary<int, string> indexOfAnswer = new();
+        FastWriteLine($"{questionsDictionnary["Question"]}\n");
         foreach (string reponse in listeReponses)
         {
             int index = listeReponses.IndexOf(reponse);
@@ -120,7 +120,8 @@ public class MyMethods
         }
         if (indexOfAnswer[int.Parse(choixQuestion)] == questionsDictionnary["Reponse_Correcte"].ToString())
         {
-
+            Console.WriteLine("Bonne réponse !");
+            AttendreContinuer();
         }
         else
         {
@@ -184,7 +185,7 @@ public class MyMethods
 
     public static void DefaiteHero()
     {
-        if (GlobalVariable.dansSalle1)
+        if (GlobalVariable.salleActuelle == 1)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkRed;
